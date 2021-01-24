@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "checkJs": true,
+    "strict": true
+  },
+  "include": ["src", "tests"],
+  "exclude": ["tests/fixtures"]
+}
