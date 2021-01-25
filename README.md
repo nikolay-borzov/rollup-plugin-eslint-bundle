@@ -1,4 +1,4 @@
-[![NPM version][npm-image]][npm-url] [![install size](https://packagephobia.com/badge?p=rollup-plugin-eslint-bundle)](https://packagephobia.com/result?p=rollup-plugin-eslint-bundle) ![build](https://github.com/nikolay-borzov/rollup-plugin-eslint-bundle/workflows/CI/badge.svg) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM version][npm-image]][npm-url] [![install size](https://packagephobia.com/badge?p=rollup-plugin-eslint-bundle)](https://packagephobia.com/result?p=rollup-plugin-eslint-bundle) ![build](https://github.com/nikolay-borzov/rollup-plugin-eslint-bundle/workflows/CI/badge.svg) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) ![npm type definitions](https://img.shields.io/npm/types/rollup-plugin-eslint-bundle)
 
 # rollup-plugin-eslint-bundle
 
