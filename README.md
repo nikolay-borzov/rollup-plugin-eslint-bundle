@@ -1,12 +1,15 @@
-# rollup-plugin-eslint-bundle [![NPM version][npm-image]][npm-url] ![build](https://github.com/nikolay-borzov/rollup-plugin-eslint-bundle/workflows/CI/badge.svg) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+# rollup-plugin-eslint-bundle [![NPM version][npm-image]][npm-url] [![install size](https://packagephobia.com/badge?p=rollup-plugin-eslint-bundle)](https://packagephobia.com/result?p=rollup-plugin-eslint-bundle) ![build](https://github.com/nikolay-borzov/rollup-plugin-eslint-bundle/workflows/CI/badge.svg) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 [npm-image]: https://img.shields.io/npm/v/rollup-plugin-eslint-bundle.svg
 [npm-url]: https://npmjs.org/package/rollup-plugin-eslint-bundle
 [rollup]: https://github.com/rollup/rollup
 [eslint-config]: https://eslint.org/docs/developer-guide/nodejs-api#parameters
 
-[Rollup] plugin to lint (and fix) bundled code with ESLint.
+🍣 A [Rollup] plugin to lint (and fix) bundled code with ESLint.
 
+## Requirements
+
+This plugin requires an LTS Node version (v12.0.0+), Rollup v2.0.0+ and ESLint 7.0.0+.
 
 ## Install
 
