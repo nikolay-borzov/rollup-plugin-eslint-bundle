@@ -1,6 +1,7 @@
-import { rollup } from 'rollup'
-import { eslintBundle } from '../src/index'
 import test from 'ava'
+import { rollup } from 'rollup'
+
+import { eslintBundle } from '../index.js'
 
 /**
  * @param {import('rollup').InputOptions} inputOptions
@@ -17,10 +18,12 @@ async function generateBundle(inputOptions, sourcemap) {
  * @param {import('../src/rollup-plugin-eslint-bundle').Options} options
  * @returns {Array<import('rollup').OutputPlugin>}
  */
-function getPlugins(options = { eslintOptions: {} }) {
+function getPlugins(options) {
+  options = { eslintOptions: {}, ...options }
+
   return [
     eslintBundle({
-      formatter: './eslint-formatter',
+      formatter: './eslint-formatter.cjs',
       ...options,
       eslintOptions: {
         overrideConfigFile: 'fixtures/.test-eslintrc.yml',
@@ -217,5 +220,6 @@ test('Sourcemap » Should not generate source map if sourcemap is false', async 
     false
   )
 
+  // eslint-disable-next-line unicorn/no-null
   t.is(map, null)
 })
