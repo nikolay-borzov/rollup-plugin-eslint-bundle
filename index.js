@@ -1,26 +1,19 @@
-import MagicString from 'magic-string'
 import * as diff from 'diff'
 import { ESLint } from 'eslint'
+import MagicString from 'magic-string'
 
 /**
- * @typedef {object} Options
- * @property {import('../node_modules/@types/eslint/index').ESLint.Options} [eslintOptions={}] ESLint constructor options
- * @property {boolean} [throwOnWarning=false] If `true`, will throw an error if any warnings were found.
- * @property {boolean} [throwOnError=false] If `true`, will throw an error if any errors were found.
- * @property {string} [formatter] Formatter name or path to be passed to `eslint.loadFormatter()`
+ * @typedef {import('rollup').SourceMapInput} SourceMapInput
+ * @typedef {import('./index').Options} Options
  */
 
-/**
- * @typedef {import('../node_modules/rollup').SourceMapInput} SourceMapInput
- */
-
-export class RollupPluginESLintBundle {
+class RollupPluginESLintBundle {
   /**
    * @param {Options} [options]
    */
-  constructor(options = { eslintOptions: {} }) {
+  constructor(options) {
     this.name = 'rollup-plugin-eslint-bundle'
-    this.options = options
+    this.options = { eslintOptions: {}, ...options }
     this.eslintOptions = this.options.eslintOptions || {}
 
     this.eslint = new ESLint(this.eslintOptions)
@@ -36,20 +29,20 @@ export class RollupPluginESLintBundle {
     const changes = diff.diffChars(source, modifiedSource)
 
     if (changes && changes.length > 0) {
-      let idx = 0
+      let index = 0
 
-      changes.forEach((part) => {
+      for (const part of changes) {
         const count = part.count ?? 0
 
         if (part.added) {
-          magicString.prependLeft(idx, part.value)
-          idx -= count
+          magicString.prependLeft(index, part.value)
+          index -= count
         } else if (part.removed) {
-          magicString.remove(idx, idx + count)
+          magicString.remove(index, index + count)
         }
 
-        idx += count
-      })
+        index += count
+      }
     }
 
     return {
@@ -63,7 +56,7 @@ export class RollupPluginESLintBundle {
   /**
    * @param {string} source
    * @param {boolean | 'inline' | 'hidden'} sourcemap
-   * @returns {Promise<{ code: string; map?: SourceMapInput } | null>}
+   * @returns {Promise< { code: string; map?: SourceMapInput } | undefined>}
    */
   async lint(source, sourcemap) {
     const results = await this.eslint.lintText(source)
@@ -89,16 +82,17 @@ export class RollupPluginESLintBundle {
     const throwOnError = hasErrors && this.options.throwOnError
 
     if (throwOnWarning && throwOnError) {
-      throw Error('Warnings or errors were found')
+      throw new Error('Warnings or errors were found')
     } else if (throwOnWarning) {
-      throw Error('Warnings were found')
+      throw new Error('Warnings were found')
     } else if (throwOnError) {
-      throw Error('Errors were found')
+      throw new Error('Errors were found')
     }
 
     const formattedSource = result.output
 
     if (!formattedSource) {
+      // eslint-disable-next-line unicorn/no-null -- must be null according to rollup typings
       return null
     }
 
@@ -111,3 +105,24 @@ export class RollupPluginESLintBundle {
     return this.regenerateSourcemap(source, formattedSource)
   }
 }
+
+/**
+ * Runs ESLint on bundled code.
+ *
+ * @param {Options} [options]
+ * @returns {import('rollup').OutputPlugin}
+ */
+export function eslintBundle(options) {
+  const plugin = new RollupPluginESLintBundle(options)
+
+  return {
+    name: plugin.name,
+
+    renderChunk(source, chunkInfo, outputOptions) {
+      return plugin.lint(source, outputOptions.sourcemap)
+    },
+  }
+}
+
+// eslint-disable-next-line import/no-default-export -- Let's consumer decide which type of import to use
+export default eslintBundle

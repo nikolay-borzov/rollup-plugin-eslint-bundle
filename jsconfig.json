@@ -5,6 +5,6 @@
     "checkJs": true,
     "strict": true
   },
-  "include": ["src", "tests"],
+  "include": ["index.js", "tests"],
   "exclude": ["tests/fixtures"]
 }

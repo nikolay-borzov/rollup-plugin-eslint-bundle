@@ -7,11 +7,11 @@
 [rollup]: https://github.com/rollup/rollup
 [eslint-config]: https://eslint.org/docs/developer-guide/nodejs-api#parameters
 
-🍣 A [Rollup] plugin to lint (and fix) bundled code with ESLint.
+🍣 A [Rollup] plugin to lint and fix bundled code with ESLint.
 
 ## Requirements
 
-This plugin requires an LTS Node version (v12.0.0+), Rollup v2.0.0+ and ESLint 7.0.0+.
+This plugin requires an LTS Node version (v14.13.1+), Rollup v2.x and ESLint >=8.x
 
 ## Install
 
@@ -22,26 +22,29 @@ npm i -D rollup-plugin-eslint-bundle
 ## Usage
 
 ```js
-// rollup.config.js
+// rollup.config.js ESM
 import { rollup } from 'rollup';
 import { eslintBundle } from 'rollup-plugin-eslint-bundle';
 
-module.exports = {
-  input: path.resolve(__dirname, './main.js'),
+const root = path.dirname(url.fileURLToPath(import.meta.url))
+
+export default {
+  input: path.resolve(root, './main.js'),
+
+  plugins: [
+    eslintBundle({
+      eslintOptions: {
+        fix: true,
+      },
+      throwOnWarning: true,
+      throwOnError: true,
+      formatter: 'compact'
+    }),
+  ],
 
   output: {
-    file: path.resolve(__dirname, './dist/bundle.js'),
+    file: path.resolve(root, './dist/bundle.js'),
     format: 'es',
-    plugins: [
-      eslintBundle({
-        eslintOptions: {
-          fix: true,
-        },
-        throwOnWarning: true,
-        throwOnError: true,
-        formatter: 'compact'
-      }),
-    ],
   },
 };
 
@@ -49,18 +52,13 @@ module.exports = {
 
 ```js
 // Rollup JavaScript API
-const rollup = require('rollup');
-const { eslintBundle } = require('rollup-plugin-eslint-bundle');
+import { rollup } from 'rollup';
+import { eslintBundle } from 'rollup-plugin-eslint-bundle';
 
 // ...
 
 const bundle = await rollup.rollup({
-  input: 'main.js'
-});
-
-await bundle.write({
-  file: 'dist/bundle.js',
-  format: 'es',
+  input: 'main.js',
   plugins: [
     eslintBundle({
       eslintOptions: {
@@ -71,6 +69,11 @@ await bundle.write({
       formatter: 'compact'
     })
   ]
+});
+
+await bundle.write({
+  file: 'dist/bundle.js',
+  format: 'es',
 });
 
 await bundle.close();

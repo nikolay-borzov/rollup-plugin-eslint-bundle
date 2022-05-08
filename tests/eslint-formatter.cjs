@@ -1,5 +1,5 @@
 /**
- * @param {import('../node_modules/@types/eslint/index').ESLint.LintResult[]} results
+ * @param {import('eslint').ESLint.LintResult[]} results
  * @returns {string}
  */
 module.exports = function (results) {

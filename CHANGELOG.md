@@ -1,5 +1,11 @@
 # rollup-plugin-eslint-bundle changelog
 
+## 7.0.0 - 2022-05-08
+* Switch to ES modules. But still provide CJS bundle in `dist`
+* Update dependencies
+* Require Node.js version >= 14
+* Update ESLint peer dependency to >=8.x
+
 ## 6.0.0 - 2021-01-24
 * Rewrite from scratch for latest `rollup` and `ESLint`
 * Replace `jest` with `ava`

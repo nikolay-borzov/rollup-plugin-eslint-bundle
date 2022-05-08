@@ -1,6 +1,6 @@
 {
   // https://www.typescriptlang.org/docs/handbook/declaration-files/dts-from-js.html
-  "include": ["src/*"],
+  "include": ["index.js"],
   "compilerOptions": {
     "allowJs": true,
     "declaration": true,
