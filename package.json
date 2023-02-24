@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-eslint-bundle",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Rollup plugin to verify (and fix) bundled code with ESLint",
   "license": "MIT",
   "repository": {
@@ -23,7 +23,7 @@
     "require": "./dist/index.cjs"
   },
   "engines": {
-    "node": ">=14.16"
+    "node": ">=18"
   },
   "files": [
     "dist",
@@ -33,7 +33,7 @@
   "scripts": {
     "test": "c8 ava",
     "test:watch": "ava --watch",
-    "test:coverage:collect": "c8 --include src/** --all --reporter=text --reporter=lcov ava",
+    "test:coverage:collect": "c8 ava",
     "test:coverage:view": "npx open-cli coverage\\lcov-report\\index.html",
     "build": "babel index.js --out-file dist/index.cjs",
     "prepublishOnly": "npm run build",
@@ -50,6 +50,16 @@
     "workerThreads": false,
     "files": [
       "./tests/tests.js"
+    ]
+  },
+  "c8": {
+    "all": true,
+    "include": [
+      "index.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
     ]
   },
   "commitlint": {
@@ -76,41 +86,41 @@
   },
   "devDependencies": {
     "@ava/babel": "^2.0.0",
-    "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.17.10",
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/preset-env": "^7.17.10",
-    "@commitlint/cli": "^16.2.4",
-    "@commitlint/config-conventional": "^16.2.4",
-    "@types/eslint": "^8.4.2",
-    "ava": "^4.2.0",
-    "c8": "^7.11.2",
-    "eslint": "^8.15.0",
-    "eslint-config-prettier": "^8.5.0",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-env": "^7.20.2",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@types/eslint": "^8.21.1",
+    "ava": "^5.2.0",
+    "c8": "^7.13.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-config-prettier-standard": "^4.0.1",
     "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-ava": "^13.2.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsdoc": "^39.2.9",
-    "eslint-plugin-n": "^15.2.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-unicorn": "^42.0.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.4.1",
-    "open-cli": "^7.0.1",
-    "prettier": "^2.6.2",
+    "eslint-plugin-ava": "^14.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^40.0.0",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-unicorn": "^45.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "open-cli": "^7.1.0",
+    "prettier": "^2.8.4",
     "prettier-config-standard": "^5.0.0",
-    "rollup": "^2.72.1",
+    "rollup": "^3.17.2",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.9.5"
   },
   "dependencies": {
-    "diff": "^5.0.0",
-    "magic-string": "^0.26.1"
+    "diff": "^5.1.0",
+    "magic-string": "^0.30.0"
   },
   "peerDependencies": {
     "eslint": ">=8.x",
-    "rollup": "2.x"
+    "rollup": "3.x"
   }
 }
