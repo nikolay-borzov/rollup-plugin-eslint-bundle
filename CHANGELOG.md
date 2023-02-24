@@ -1,26 +1,74 @@
-# rollup-plugin-eslint-bundle changelog
+# Changelog
+
+<!--
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+### BREAKING CHANGES
+-->
+
+## 8.0.0 - 2023-02-25
+
+### Changed
+
+- Update dependencies
+
+### BREAKING CHANGES
+
+- Require Node.js version >= 18
+- Update `rollup` to 3.x
 
 ## 7.0.0 - 2022-05-08
-* Switch to ES modules. But still provide CJS bundle in `dist`
-* Update dependencies
-* Require Node.js version >= 14
-* Update ESLint peer dependency to >=8.x
+
+### Changed
+
+- Update dependencies
+
+### BREAKING CHANGES
+
+- Switch to ES modules. But still provide CJS bundle in `dist`
+- Require Node.js version >= 14
+- Update `eslint` peer dependency to >=8.x
 
 ## 6.0.0 - 2021-01-24
-* Rewrite from scratch for latest `rollup` and `ESLint`
-* Replace `jest` with `ava`
-* Require Node.js version >= 12
-* Set `rollup` and `eslint` as peer dependencies
-* Generate TypeScript declaration files.
+
+### Added
+
+- Generate TypeScript declaration files.
+
+### Changed
+
+- Replace `jest` with `ava`
+- Set `rollup` and `eslint` as peer dependencies
+
+### BREAKING CHANGES
+
+- Rewrite from scratch for latest `rollup` and `ESLint`
+- Require Node.js version >= 12
 
 ## 5.0.2 - 2018-11-02
-* Update dependencies
+
+### Changed
+
+- Update dependencies
 
 ## 5.0.1 - 2018-07-15
-* Fix for case when fix doesn't produce output
-* Fixes for ESLint 5.x
-* Disable tests for source mapping. For some reason rollup returns the same 'mappings' for fixed and not fixed code even though the plugin produces different source maps
-* Update dependencies
+
+### Changed
+
+- Disable tests for source mapping. For some reason rollup returns the same 'mappings' for fixed and not fixed code even though the plugin produces different source maps
+- Update dependencies
+
+### Fixed
+
+- Fix for case when fix doesn't produce output
+- Fixes for ESLint 5.x
 
 ## 5.0.0 - 2018-01-21
-* Rewrite to verify and fix the bundle instead of imported files
+
+### BREAKING CHANGES
+
+- Rewrite to verify and fix the bundle instead of imported files

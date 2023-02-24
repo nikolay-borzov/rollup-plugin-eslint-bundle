@@ -11,7 +11,7 @@
 
 ## Requirements
 
-This plugin requires an LTS Node version (v14.13.1+), Rollup v2.x and ESLint >=8.x
+This plugin requires an Node.js v18.x, Rollup v3.x and ESLint v8.x
 
 ## Install
 

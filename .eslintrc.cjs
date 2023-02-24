@@ -1,11 +1,6 @@
 module.exports = {
   root: true,
 
-  parser: '@babel/eslint-parser',
-  parserOptions: {
-    sourceType: 'module',
-  },
-
   ignorePatterns: [
     '**/*.*',
     '!**/*.js',
@@ -14,9 +9,16 @@ module.exports = {
     'node_modules',
     'dist',
   ],
+
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    sourceType: 'module',
+  },
+
   env: {
     node: true,
   },
+
   extends: [
     'eslint:recommended',
     'plugin:jsdoc/recommended',
@@ -24,15 +26,15 @@ module.exports = {
     'plugin:unicorn/recommended',
     'prettier-standard/prettier-file',
   ],
+
   settings: {
     jsdoc: {
       mode: 'typescript',
     },
   },
+
   // Keep rules grouped by plugin and sorted alphabetically
   rules: {
-    'object-shorthand': ['error', 'always'],
-
     'padding-line-between-statements': [
       'error',
       /* Empty line after import */
@@ -62,9 +64,6 @@ module.exports = {
     'jsdoc/require-property-description': 'off',
     'jsdoc/require-returns-description': 'off',
     'jsdoc/require-returns': 'off',
-
-    'jsdoc/require-param-description': 'off',
-    'jsdoc/require-returns-description': 'off',
 
     /* eslint-plugin-unicorn */
 
@@ -103,9 +102,7 @@ module.exports = {
 
     /* eslint-plugin-n (node) */
 
-    'n/no-unsupported-features/es-syntax': [
-      'error',
-    ],
+    'n/no-unsupported-features/es-syntax': ['error'],
   },
 
   overrides: [
