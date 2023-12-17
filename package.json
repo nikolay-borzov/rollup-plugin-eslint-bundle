@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-eslint-bundle",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "Rollup plugin to verify (and fix) bundled code with ESLint",
   "license": "MIT",
   "repository": {
