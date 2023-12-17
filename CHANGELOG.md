@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 9.0.0 - 2023-12-17
+
 ### Changed
 
 - Update dependencies
@@ -24,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### BREAKING CHANGES
 
 - Require Node.js version >= 20
+- Update `rollup` to 4.x
 
 ## 8.0.0 - 2023-02-25
 
