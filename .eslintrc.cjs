@@ -21,11 +21,14 @@ module.exports = {
 
   extends: [
     'eslint:recommended',
-    'plugin:jsdoc/recommended',
+    'plugin:jsdoc/recommended-typescript-flavor',
     'plugin:n/recommended',
     'plugin:unicorn/recommended',
+    'plugin:@stylistic/disable-legacy',
     'prettier-standard/prettier-file',
   ],
+
+  plugins: ['@stylistic', '@stylistic/migrate'],
 
   settings: {
     jsdoc: {
@@ -35,11 +38,22 @@ module.exports = {
 
   // Keep rules grouped by plugin and sorted alphabetically
   rules: {
-    'padding-line-between-statements': [
+    // Sort import members
+    'sort-imports': [
       'error',
-      /* Empty line after import */
-      { blankLine: 'always', prev: 'import', next: '*' },
-      { blankLine: 'any', prev: 'import', next: 'import' },
+      {
+        ignoreDeclarationSort: true,
+      },
+    ],
+
+    /* @stylistic/eslint-plugin */
+
+    '@stylistic/migrate/migrate-js': 'error',
+
+    '@stylistic/padding-line-between-statements': [
+      'error',
+      /* Empty line before if statement */
+      { blankLine: 'always', prev: '*', next: 'if' },
       /* Empty line before return */
       { blankLine: 'always', prev: '*', next: 'return' },
       /* Empty line after const, let */
@@ -57,6 +71,15 @@ module.exports = {
       'error',
       'never',
       { tags: { property: 'never' } },
+    ],
+    // Empty line after description
+    'jsdoc/tag-lines': [
+      'error',
+      'never',
+      {
+        startLines: 1,
+        tags: { description: { lines: 'always', count: 1 } },
+      },
     ],
     // Adding JSDoc is preferable but not required
     'jsdoc/require-jsdoc': 'off',
@@ -76,6 +99,7 @@ module.exports = {
     'import/extensions': ['error', 'always', { ignorePackages: true }],
     // Force using only named exports
     'import/no-default-export': 'error',
+    'import/newline-after-import': 'error',
     // Sort imports
     'import/order': [
       'error',
@@ -118,6 +142,14 @@ module.exports = {
         /* eslint-plugin-unicorn */
 
         'unicorn/prefer-module': 'off',
+      },
+    },
+    // Config ES module
+    {
+      files: '*.config.js',
+      rules: {
+        // Acceptable export type is not controlled for config files
+        'import/no-default-export': 'off',
       },
     },
   ],

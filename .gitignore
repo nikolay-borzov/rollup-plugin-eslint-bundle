@@ -1,5 +1,17 @@
-.vscode
-/node_modules
-coverage
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Coverage by nyc/c8
 .nyc_output
+coverage
+
+# Generate output
 dist
+
+# Coverage
+
+# IDE
+.vscode

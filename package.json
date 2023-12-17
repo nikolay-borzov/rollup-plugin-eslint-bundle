@@ -23,7 +23,7 @@
     "require": "./dist/index.cjs"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "files": [
     "dist",
@@ -37,79 +37,37 @@
     "test:coverage:view": "npx open-cli coverage\\lcov-report\\index.html",
     "build": "babel index.js --out-file dist/index.cjs",
     "prepublishOnly": "npm run build",
+    "update-browserslist-db": "npx update-browserslist-db@latest",
     "prepare": "husky install"
   },
-  "prettier": {
-    "printWidth": 80,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "semi": false
-  },
-  "ava": {
-    "verbose": true,
-    "workerThreads": false,
-    "files": [
-      "./tests/tests.js"
-    ]
-  },
-  "c8": {
-    "all": true,
-    "include": [
-      "index.js"
-    ],
-    "reporter": [
-      "text",
-      "lcov"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "body-case": [
-        2,
-        "always",
-        "sentence-case"
-      ],
-      "subject-case": [
-        2,
-        "always",
-        "sentence-case"
-      ]
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix"
-    ]
-  },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.0",
-    "@babel/eslint-parser": "^7.19.1",
-    "@babel/preset-env": "^7.20.2",
-    "@commitlint/cli": "^17.4.4",
-    "@commitlint/config-conventional": "^17.4.4",
-    "@types/eslint": "^8.21.1",
-    "ava": "^5.2.0",
-    "c8": "^7.13.0",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.6",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/preset-env": "^7.23.6",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@stylistic/eslint-plugin": "^1.5.1",
+    "@stylistic/eslint-plugin-migrate": "^1.5.1",
+    "@types/eslint": "^8.44.9",
+    "ava": "^6.0.1",
+    "c8": "^8.0.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-prettier-standard": "^4.0.1",
-    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard": "^17.1.0",
     "eslint-plugin-ava": "^14.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^40.0.0",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsdoc": "^46.9.1",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-unicorn": "^45.0.2",
+    "eslint-plugin-unicorn": "^49.0.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
-    "open-cli": "^7.1.0",
-    "prettier": "^2.8.4",
-    "prettier-config-standard": "^5.0.0",
+    "lint-staged": "^15.2.0",
+    "open-cli": "^7.2.0",
+    "prettier": "3.1.1",
+    "prettier-config-standard": "^7.0.0",
     "rollup": "^3.17.2",
     "typescript": "^4.9.5"
   },
