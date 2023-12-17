@@ -61,8 +61,8 @@ test('Lint » Should lint files', async (t) => {
 
   t.assert(
     results.some((result) =>
-      result.messages.some(({ message }) => message === "'x' is not defined.")
-    )
+      result.messages.some(({ message }) => message === "'x' is not defined."),
+    ),
   )
 })
 
@@ -181,7 +181,7 @@ test('Sourcemap » Should generate source map for fixed code', async (t) => {
         },
       }),
     },
-    true
+    true,
   )
 
   t.snapshot(map)
@@ -199,7 +199,7 @@ test('Sourcemap » Should preserve existing source map by default', async (t) =>
         },
       }),
     },
-    true
+    true,
   )
 
   t.snapshot(map)
@@ -217,7 +217,7 @@ test('Sourcemap » Should not generate source map if sourcemap is false', async 
         },
       }),
     },
-    false
+    false,
   )
 
   // eslint-disable-next-line unicorn/no-null
